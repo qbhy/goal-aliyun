@@ -1,4 +1,4 @@
-# goal-wechat
+# goal-aliyun
 这是一个 goal 的阿里云 sdk，基于 [denverdino/aliyungo](https://github.com/denverdino/aliyun) 封装，支持多应用
 
 ## 安装 - install
@@ -32,7 +32,7 @@ func main()  {
 ```
 使用
 ```go
-// app/controllers/order/pay.go
+// app/controllers/account/login.go
 
 import (
 	"fmt"

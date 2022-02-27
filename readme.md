@@ -1,41 +1,14 @@
 # goal-wechat
-这是一个 goal 的支付宝 sdk，基于 [smartwalle/alipay](https://github.com/smartwalle/alipay) 封装，支持多应用
+这是一个 goal 的阿里云 sdk，基于 [denverdino/aliyungo](https://github.com/denverdino/aliyun) 封装，支持多应用
 
 ## 安装 - install
 ```shell
-$ go get github.com/qbhy/goal-alipay
+$ go get github.com/qbhy/goal-aliyun
 ```
 
 ## 配置 - configuration
 ```go
-// config/alipay.go
-package config
-
-import (
-	"github.com/goal-web/contracts"
-	alipay "github.com/qbhy/goal-alipay"
-)
-
-func init() {
-	configs["alipay"] = func(env contracts.Env) interface{} {
-		return &alipay.Config{
-			Default: env.StringOption("alipay.default", "default"),
-			Apps: map[string]*alipay.AppConfig{
-				"default": {
-					AppId:        env.GetString("alipay.appid"),
-					PrivateKey:   env.GetString("alipay.private_key"),
-					IsProduction: !env.GetBool("alipay.debug"),
-					//OptionFunctions: []alipay.OptionFunc{
-					//	func(c *alipay2.Client) {
-					//		// do something
-					//	},
-					//},
-				},
-			},
-		}
-	}
-}
-
+// config/aliyun.go
 ```
 
 ## 使用 - usage
@@ -44,7 +17,7 @@ func init() {
 // main.go
 import (
     "github.com/goal-web/application"
-alipay "github.com/qbhy/goal-alipay"
+    aliyun "github.com/qbhy/goal-aliyun"
 )
 
 func main()  {
@@ -52,7 +25,7 @@ func main()  {
     
     app.RegisterServices(
         // other service
-        alipay.ServiceProvider{},
+        aliyun.ServiceProvider{},
     )
 	// ...
 }
@@ -64,27 +37,15 @@ func main()  {
 import (
 	"fmt"
     "github.com/goal-web/contracts"
-    alipay "github.com/qbhy/goal-alipay"
-    alipayWalle "github.com/smartwalle/alipay/v3"
+    aliyun "github.com/qbhy/goal-aliyun"
 )
 
 // ... 
-
-// 通过注入支付宝工厂，你可以通过工厂获取定义好的应用
-func AppTrade(alipay alipay.Factory, request contracts.HttpRequest) {
-    var client = alipay.Client("default")
-}
-
-// 你也可以直接注入 支付宝kehuduan  的实例，这种情况下会获取默认实例
-func InjectInstanceExample(client *alipayWalle.Client) {
-	// do something ...
-}
 
 // ...
 ```
 
 ## 相关链接  
 [goal-web](https://github.com/goal-web/goal)  
-[qbhy/goal-alipay](https://github.com/qbhy/goal-alipay)  
-[smartwalle/alipay](https://github.com/smartwalle/alipay)  
+[qbhy/goal-aliyun](https://github.com/qbhy/goal-aliyun)  
 qbhy0715@qq.com

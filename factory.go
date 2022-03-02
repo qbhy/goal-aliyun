@@ -20,7 +20,12 @@ func (f *factory) key(name string, key *config2.Key) *config2.Key {
 	if key != nil {
 		return key
 	}
-	return f.config.Keys.Keys[name]
+
+	if key = f.config.Keys.Keys[name]; key == nil {
+		key = f.config.Keys.Keys[f.config.Default]
+	}
+
+	return key
 }
 
 func (f *factory) Cdn(name ...string) *cdn.CdnClient {

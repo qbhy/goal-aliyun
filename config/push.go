@@ -6,6 +6,6 @@ type Push struct {
 }
 
 type PushConfig struct {
-	Default string
-	Disks   map[string]*Push
+	Default  string
+	Channels map[string]*Push
 }

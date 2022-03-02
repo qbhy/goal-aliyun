@@ -1,11 +1,13 @@
 package config
 
+import "github.com/denverdino/aliyungo/oss"
+
 type Oss struct {
 	*Key
 	KeyName  string
-	Region   string
+	Region   oss.Region
 	Bucket   string
-	EndPoint string
+	Endpoint string
 	Debug    bool
 }
 

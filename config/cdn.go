@@ -4,7 +4,7 @@ type Cdn struct {
 	*Key
 	KeyName string
 
-	EndPoint string
+	Endpoint string
 }
 
 type CdnConfig struct {

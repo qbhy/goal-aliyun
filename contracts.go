@@ -1,6 +1,7 @@
 package aliyun
 
 import (
+	"github.com/denverdino/aliyungo/cdn"
 	"github.com/denverdino/aliyungo/oss"
 	"github.com/denverdino/aliyungo/push"
 	"github.com/denverdino/aliyungo/sms"
@@ -9,6 +10,7 @@ import (
 type Factory interface {
 	Push(name ...string) *push.Client
 	Oss(name ...string) *oss.Client
+	Cdn(name ...string) *cdn.CdnClient
 	Sms(name ...string) *sms.Client
 	DYSms(name ...string) *sms.DYSmsClient
 }

@@ -9,6 +9,8 @@ type Oss struct {
 	Bucket   string
 	Endpoint string
 	Debug    bool
+	Internal bool
+	Secure   bool
 }
 
 type OssConfig struct {

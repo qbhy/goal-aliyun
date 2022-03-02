@@ -7,5 +7,5 @@ type Key struct {
 
 type Keys struct {
 	Default string
-	Keys    map[string]Key
+	Keys    map[string]*Key
 }

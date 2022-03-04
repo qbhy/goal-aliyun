@@ -27,6 +27,12 @@ func (f *factory) key(name string, key *config2.Key) *config2.Key {
 
 	return key
 }
+func (f *factory) Key(name ...string) (id string, secret string, exists bool) {
+	if key := f.config.Keys.Keys[utils.DefaultString(name, f.config.Default)]; key != nil {
+		return key.AccessKeyId, key.AccessKeySecret, true
+	}
+	return "", "", false
+}
 
 func (f *factory) Cdn(name ...string) *cdn.CdnClient {
 	var config = f.config.Cdn.Disks[utils.DefaultString(name, f.config.Cdn.Default)]

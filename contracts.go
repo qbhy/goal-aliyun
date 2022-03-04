@@ -8,6 +8,7 @@ import (
 )
 
 type Factory interface {
+	Key(name ...string) (id string, secret string, exists bool)
 	Push(name ...string) *push.Client
 	Oss(name ...string) *oss.Client
 	Cdn(name ...string) *cdn.CdnClient

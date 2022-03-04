@@ -15,6 +15,10 @@ func (s ServiceProvider) Register(app contracts.Application) {
 	app.Singleton("aliyun", func(config contracts.Config) Factory {
 		return NewFactory(config.Get("aliyun").(*config2.Config))
 	})
+	app.Singleton("aliyun.key", func(config contracts.Config) *config2.Key {
+		var aliyunConfig = config.Get("aliyun").(*config2.Config)
+		return aliyunConfig.Keys.Keys[aliyunConfig.Default]
+	})
 	app.Singleton("aliyun.sms", func(factory Factory) *sms.Client {
 		return factory.Sms()
 	})

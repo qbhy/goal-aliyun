@@ -145,6 +145,19 @@ func SendSmsCode(request *account.SendSmsRequest, smsClient *sms.Client) interfa
 // ...
 ```
 
+## 契约 - contract
+### 工厂 - Factory
+```go
+type Factory interface {
+	Key(name ...string) (id string, secret string, exists bool)
+	Push(name ...string) *push.Client
+	Oss(name ...string) *oss.Client
+	Cdn(name ...string) *cdn.CdnClient
+	Sms(name ...string) *sms.Client
+	DYSms(name ...string) *sms.DYSmsClient
+}
+```
+
 ## 相关链接  
 [goal-web](https://github.com/goal-web/goal)  
 [qbhy/goal-alipay](https://github.com/qbhy/goal-alipay)  
